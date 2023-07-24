@@ -13,7 +13,7 @@ export default function Feed() {
 
   const fetchImages= async()=>{
       try{
-      const response= await axios.get('http://localhost:3001/posts/images')
+      const response= await axios.get('/posts/images')
       setImages(response.data);
       }
       catch(error){
