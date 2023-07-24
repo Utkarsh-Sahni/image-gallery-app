@@ -29,8 +29,7 @@ export default function Register() {
       );
 
       if (
-        response.data &&
-        response.data.message === "User registered successfully"
+        response.data
       ) {
         setRegistrationStatus("Registration successful!");
         navigate("/");

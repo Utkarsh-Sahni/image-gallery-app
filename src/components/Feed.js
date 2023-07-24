@@ -3,6 +3,7 @@ import ImageUpload from './ImageUpload'
 import Gallery from './Gallery'
 import axios from 'axios';
 import SearchImages from './SearchImages.js';
+import MyPhotos from './MyPhotos';
 
 export default function Feed() {
   const [images, setImages] = useState([]);
@@ -34,6 +35,7 @@ export default function Feed() {
     <div className='m-5 border border-2 border-dark-subtle rounded p-5'>
       <ImageUpload fetchImages={fetchImages}/>
       <SearchImages updateGallery={updateGallery}/>
+      {/* <MyPhotos myimages={myimages}/> */}
       <Gallery images={images}/>
     </div>
   )

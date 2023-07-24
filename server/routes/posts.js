@@ -16,11 +16,11 @@ const router = express.Router();
 
 router.get("/images/search", searchImages);
 router.get("/images",verifyToken, getAllImages);
-router.get("/images/:id", getImageById);
-router.post("/images/:id/comments", addComment);
-router.get("/images/:id/comments", getComments);
-router.post("/images/:id/likes",  likeImage);
-router.get("/images/:id/likes",  getLikes);
-router.get("/images/:id/download", downloadImage);
+router.get("/images/:id",verifyToken, getImageById);
+router.post("/images/:id/comments",verifyToken, addComment);
+router.get("/images/:id/comments",verifyToken, getComments);
+router.post("/images/:id/likes", verifyToken, likeImage);
+router.get("/images/:id/likes", verifyToken, getLikes);
+router.get("/images/:id/download",verifyToken, downloadImage);
 
 export default router;
