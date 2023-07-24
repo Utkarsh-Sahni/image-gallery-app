@@ -50,7 +50,7 @@ const ImageViewer = () => {
 
   const handleLike = async () => {
     try {
-      await axios.post(`http://localhost:3001/posts/images/${id}/likes`, {isLiked });
+      await axios.post(`posts/images/${id}/likes`, {isLiked });
       setIsLiked(!isLiked);
       console.log(isLiked);
       fetchImageDetails();
@@ -61,7 +61,7 @@ const ImageViewer = () => {
 
   const handleComment = async () => {
     try {
-      await axios.post(`http://localhost:3001/posts/images/${id}/comments`, {
+      await axios.post(`https://image-gallery-app-production.up.railway.app/posts/images/${id}/comments`, {
         text: newComment,
         username: "user1",
       });
@@ -74,7 +74,7 @@ const ImageViewer = () => {
 
   const handleDownload = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/posts/images/${id}/download`, {
+      const response = await axios.get(`https://image-gallery-app-production.up.railway.app/posts/images/${id}/download`, {
         responseType: "blob",
       });
       const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
@@ -110,7 +110,7 @@ const ImageViewer = () => {
             <div className="mb-3">
               <img
                 style={{ maxWidth: "50rem" }}
-                src={`http://localhost:3001/${image.imageUrl}`}
+                src={`https://image-gallery-app-production.up.railway.app/${image.imageUrl}`}
                 alt={image.title}
               />
             </div>
