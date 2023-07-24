@@ -8,7 +8,7 @@ const ImageViewer = () => {
   // const [likes, setLikes] = useState(0);
   // const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
-  const [isLiked, setIsLiked]= useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     fetchImageDetails();
@@ -18,10 +18,11 @@ const ImageViewer = () => {
     try {
       const response = await axios.get(
         `https://image-gallery-app-production.up.railway.app/posts/images/${id}`,
-        {headers: {
-          Authorization: `Bearer ${localStorage.getItem('jwt')}`
-        }}
-
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
       );
 
       setImage(response.data);
@@ -50,7 +51,15 @@ const ImageViewer = () => {
 
   const handleLike = async () => {
     try {
-      await axios.post(`posts/images/${id}/likes`, {isLiked });
+      await axios.post(
+        `https://image-gallery-app-production.up.railway.app/posts/images/${id}/likes`,
+        { isLiked },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
+      );
       setIsLiked(!isLiked);
       console.log(isLiked);
       fetchImageDetails();
@@ -61,10 +70,18 @@ const ImageViewer = () => {
 
   const handleComment = async () => {
     try {
-      await axios.post(`https://image-gallery-app-production.up.railway.app/posts/images/${id}/comments`, {
-        text: newComment,
-        username: "user1",
-      });
+      await axios.post(
+        `https://image-gallery-app-production.up.railway.app/posts/images/${id}/comments`,
+        {
+          text: newComment,
+          username: "user1",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
+      );
       fetchImageDetails();
       setNewComment(""); // Clear the comment input field
     } catch (error) {
@@ -74,13 +91,21 @@ const ImageViewer = () => {
 
   const handleDownload = async () => {
     try {
-      const response = await axios.get(`https://image-gallery-app-production.up.railway.app/posts/images/${id}/download`, {
-        responseType: "blob",
-      });
+      const response = await axios.get(
+        `https://image-gallery-app-production.up.railway.app/posts/images/${id}/download`,
+        {
+          responseType: "blob",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
+      );
       const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = downloadUrl;
-      link.setAttribute("download",image.imageUrl); // Set the image name for download
+      link.setAttribute("download", image.imageUrl); // Set the image name for download
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -91,10 +116,10 @@ const ImageViewer = () => {
 
   const handleShare = () => {
     // Generate sharing URLs for Facebook, Twitter, and Pinterest
-    const twitterShareUrl = `http://twitter.com/share?url=http://localhost:3001/${image.imageUrl}`
+    const twitterShareUrl = `http://twitter.com/share?url=http://localhost:3001/${image.imageUrl}`;
 
     // Open sharing links in a new window
-    window.open(twitterShareUrl, '_blank');
+    window.open(twitterShareUrl, "_blank");
   };
 
   return (
@@ -128,7 +153,7 @@ const ImageViewer = () => {
             <div className="d-flex mb-3">
               <p className="m-2">Likes: {image.likes}</p>
               <button className="btn btn-danger" onClick={handleLike}>
-                {isLiked? 'Unlike' : 'Like'}
+                {isLiked ? "Unlike" : "Like"}
               </button>
             </div>
           </div>
