@@ -12,7 +12,7 @@ import cookieParser from "cookie-parser";
 dotenv.config();
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Change this to your website's domain
+  origin: 'https://image-gallery-us.netlify.app', // Change this to your website's domain
   credentials: true, // Allow cookies to be sent with requests (if you're using cookies for authentication)
 };
 
