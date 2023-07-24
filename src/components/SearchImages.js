@@ -6,7 +6,10 @@ const SearchImages = ({ updateGallery }) => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/posts/images/search?query=${searchQuery}`);
+      const response = await axios.get(`https://image-gallery-app-production.up.railway.app/posts/images/search?query=${searchQuery}`,
+      {headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }});
       updateGallery(response.data);
     } catch (error) {
       console.error('Error searching images:', error);

@@ -24,7 +24,7 @@ export default function Register() {
       };
 
       const response = await axios.post(
-        "http://localhost:3001/auth/register",
+        "https://image-gallery-app-production.up.railway.app/auth/register",
         userData
       );
 

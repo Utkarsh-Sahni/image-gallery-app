@@ -14,7 +14,7 @@ const Gallery = ({ images }) => {
           {images.map((image) => (
             <Link to={`/image/${image._id}`} key={image._id}>
               <img
-                src={`http://localhost:3001/${image.imageUrl}`}
+                src={`https://image-gallery-app-production.up.railway.app/${image.imageUrl}`}
                 alt={image.title}
                 style={{ width: "20rem", margin: "10px" }}
               />

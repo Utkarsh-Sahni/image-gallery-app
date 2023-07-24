@@ -14,7 +14,7 @@ export default function Feed() {
 
   const fetchImages= async()=>{
       try{
-      const response= await axios.get('http://localhost:3001/posts/images',{headers: {
+      const response= await axios.get('https://image-gallery-app-production.up.railway.app/posts/images',{headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }})
       setImages(response.data);

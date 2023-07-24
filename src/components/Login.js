@@ -17,7 +17,7 @@ export default function Login() {
       };
       // console.log(userData);
       const response = await axios.post(
-        "http://localhost:3001/auth/login",
+        "https://image-gallery-app-production.up.railway.app/auth/login",
         userData
       );
       console.log("response",response.data);

@@ -20,8 +20,11 @@ const ImageUpload = ({ fetchImages }) => {
       
       console.log(formData.title);
       const response = await axios.post(
-        "http://localhost:3001/posts/upload",
-        formData
+        "https://image-gallery-app-production.up.railway.app/posts/upload",
+        formData,
+        {headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        }}
       );
 
       if (

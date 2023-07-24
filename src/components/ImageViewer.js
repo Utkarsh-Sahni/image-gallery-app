@@ -17,7 +17,11 @@ const ImageViewer = () => {
   const fetchImageDetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/posts/images/${id}`
+        `https://image-gallery-app-production.up.railway.app/posts/images/${id}`,
+        {headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        }}
+
       );
 
       setImage(response.data);
