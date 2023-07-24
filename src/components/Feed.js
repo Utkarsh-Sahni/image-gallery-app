@@ -3,7 +3,6 @@ import ImageUpload from './ImageUpload'
 import Gallery from './Gallery'
 import axios from 'axios';
 import SearchImages from './SearchImages.js';
-import MyPhotos from './MyPhotos';
 
 export default function Feed() {
   const [images, setImages] = useState([]);
