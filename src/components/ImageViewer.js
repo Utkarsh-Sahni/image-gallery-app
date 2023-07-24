@@ -67,6 +67,7 @@ const ImageViewer = () => {
       console.error("Error liking image:", error);
     }
   };
+  
 
   const handleComment = async () => {
     try {
