@@ -67,7 +67,7 @@ const ImageViewer = () => {
       console.error("Error liking image:", error);
     }
   };
-
+  
 
   const handleComment = async () => {
     try {
@@ -123,15 +123,11 @@ const ImageViewer = () => {
     window.open(twitterShareUrl, "_blank");
   };
 
-  const handleBack = () =>{
-    
-  }
-
   return (
     <div className=" d-flex justify-content-center vh-100 align-items-center">
       <div className="p-5 border border-2 border-subtle-dark rounded">
         <div className="mb-3">
-          <a className="btn btn-secondary" onClick={handleBack}>
+          <a className="btn btn-secondary" href="/feed">
             Back
           </a>
         </div>
