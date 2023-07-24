@@ -15,7 +15,7 @@ import { verifyToken } from "../middleware/auth.js";
 const router = express.Router();
 
 router.get("/images/search", searchImages);
-router.get("/images", getAllImages);
+router.get("/images",verifyToken, getAllImages);
 router.get("/images/:id", getImageById);
 router.post("/images/:id/comments", addComment);
 router.get("/images/:id/comments", getComments);

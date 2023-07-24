@@ -30,7 +30,6 @@ export const login = async( req, res) => {
     try{
 
         const {email, password} = req.body;
-        
         const user=  await User.findOne({ email: email});
         
         if(!user) return res.status(400).json({ msg: "User does not exist"});
@@ -40,17 +39,8 @@ export const login = async( req, res) => {
         
         const token= jwt.sign({id : user._id}, process.env.JWT_SECRET_KEY, {expiresIn: '24h'});
         delete user.password;
-
         
-        res.cookie('access_token', token, {
-            httpOnly: true, // The cookie can't be accessed through JavaScript
-            secure: false, // Set to true if using HTTPS
-            sameSite: 'strict', // Restrict the cookie to same-site requests
-            maxAge: 24*3600000, 
-            domain: 'localhost', // Set the domain to localhost or your custom domain
-            path: '/'// Expiry time in milliseconds (1 hour in this case)
-          })
-          return res.status(200).send(token);
+          return res.status(200).json({token});
         ;
         
     }catch(err) {

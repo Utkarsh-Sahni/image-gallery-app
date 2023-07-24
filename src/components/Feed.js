@@ -6,14 +6,17 @@ import SearchImages from './SearchImages.js';
 
 export default function Feed() {
   const [images, setImages] = useState([]);
-  
+  const token= localStorage.getItem('jwt');
+  console.log(token);
   useEffect(() => {
     fetchImages();
   }, []);
 
   const fetchImages= async()=>{
       try{
-      const response= await axios.get('/posts/images')
+      const response= await axios.get('http://localhost:3001/posts/images',{headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }})
       setImages(response.data);
       }
       catch(error){

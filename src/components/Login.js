@@ -20,8 +20,9 @@ export default function Login() {
         "http://localhost:3001/auth/login",
         userData
       );
-      // console.log(response);
-      if (response.data && response.data.message === "Login successful") {
+      console.log("response",response.data);
+      if (response.data) {
+        localStorage.setItem('jwt', response.data.token)
         setLoginStatus("Login successful!");
         navigate("/feed");
       }
